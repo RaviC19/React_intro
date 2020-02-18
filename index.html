@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React</title>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script type="text/babel">
+      function Counter() {
+        const [state, setState] = React.useState(0);
+        return (
+          <div>
+            <button
+              onClick={function() {
+                setState(state + 1);
+              }}
+            >
+              +
+            </button>
+            {state}
+            <button
+              onClick={function() {
+                setState(state - 1);
+              }}
+            >
+              -
+            </button>
+          </div>
+        );
+      }
+
+      function Header({ title }) {
+        const [state, setState] = React.useState(false);
+        return (
+          <header
+            onClick={function() {
+              setState(!state);
+            }}
+          >
+            <h1>{state ? title : "*'*'*'*'*'*'"}</h1>
+          </header>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <Header title="Worst Title Ever" />
+            <Header title="Best Title Ever" />
+            <Header title="Alright Title" />
+            <button className="demo">Buttonmania</button>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Counter />, document.getElementById("main"));
+    </script>
+  </body>
+</html>
